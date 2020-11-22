@@ -1,18 +1,13 @@
 package ru.job4j.inheritance.professions.pacient;
 
-public class Pacient extends HealthyPacient{
-    private String name = "Дмитрий";
-    private Diagnosis diagnose;
+public class Pacient{
+    private String name;
 
-    public Diagnosis getDiagnose() {
-        return diagnose;
+    public Pacient(String name) {
+        this.name = name;
     }
 
-    public void setDiagnose(Diagnosis diagnose) {
-        this.diagnose = diagnose;
-    }
-
-    private String getName() {
+    public String getName() {
         return name;
     }
 }
