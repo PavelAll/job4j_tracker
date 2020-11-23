@@ -8,8 +8,8 @@ import javax.xml.crypto.Data;
 public class Builder extends Engineer {
     private House house;
 
-    public Builder() {
-        super();
+    public Builder(String name, String surname) {
+        super(name, surname);
     }
 
     public House build(Customer order) {

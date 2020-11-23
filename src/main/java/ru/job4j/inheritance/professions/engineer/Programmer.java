@@ -6,8 +6,8 @@ import ru.job4j.inheritance.professions.customer.Program;
 public class Programmer extends Engineer{
     private Program program;
 
-    public Programmer() {
-        super();
+    public Programmer(String name, String surname) {
+        super(name, surname);
     }
 
     public Program coding(Customer order) {

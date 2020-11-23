@@ -5,7 +5,7 @@ import ru.job4j.inheritance.professions.pacient.Diagnosis;
 import ru.job4j.inheritance.professions.pacient.Pacient;
 
 public class Doctor extends Profession {
-    public Doctor() {
-        super();
+    public Doctor(String name, String surname) {
+        super(name, surname);
     }
 }
