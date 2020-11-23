@@ -15,13 +15,10 @@ public class Library {
 
         System.out.println("Swap book " + "\"" + books[0].getName() + "\"" + " with book " + "\"" + books[3].getName() + "\"");
 
-        for (int index = 0; index < books.length; index++) {
-            if (index == 0) {
-                Book temp = books[index];
-                books[index] = books[3];
-                books[3] = temp;
-            }
-        }
+        Book temp = books[0];
+        books[0] = books[3];
+        books[3] = temp;
+
 
         for (int index = 0; index < books.length; index++) {
             Book bk = books[index];
