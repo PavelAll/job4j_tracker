@@ -28,5 +28,8 @@ public class StartUI {
 
         Item item = tracker.findById(3);
         System.out.println(item.getName());
+
+        item = new Item(4, "Заявление 4");
+        System.out.println(item);
     }
 }
