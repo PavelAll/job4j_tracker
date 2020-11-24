@@ -9,30 +9,28 @@ public class Tracker {
 
 
     public boolean replace(int id, Item item) {
-        boolean rsl = false;
         int index = indexOf(id);
-        for (int i = 0; i < size; i++) {
-            if (i == index) {
-                items[i] = item;
-                items[i].setId(id);
-                rsl = true;
-                break;
-            }
+        boolean rsl = index != -1;
+        if (rsl) {
+            items[index] = item;
+            items[index].setId(id);
+            rsl = true;
         }
         return rsl;
     }
 
     public boolean delete(int id) {
         int index = indexOf(id);
-        if (index != -1) {
+        boolean rsl = index != -1;
+        if (rsl) {
             int start = index + 1;
             int length = size - index;
             System.arraycopy(items, start, items, index, length);
             items[size - 1] = null;
             size--;
-            return true;
+            rsl = true;
         }
-        return false;
+        return rsl;
     }
 
     private int indexOf(int id) {
