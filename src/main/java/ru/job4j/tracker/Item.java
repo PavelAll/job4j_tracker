@@ -10,7 +10,9 @@ public class Item {
     public Item() {
 
     }
-
+    public Item(String name) {
+        this.name = name;
+    }
     public Item(int id) {
         this.id = id;
     }
