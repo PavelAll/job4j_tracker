@@ -1,7 +1,7 @@
 package ru.job4j.oop;
 
 public class Bus implements Vehicle{
-    String className = getClass().getSimpleName();
+    private String className = getClass().getSimpleName();
 
     @Override
     public void arrival() {
