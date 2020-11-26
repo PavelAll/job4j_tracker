@@ -23,7 +23,9 @@ public class StartUI {
 
                 System.out.println("=== Show all item ===");
                 Item[] items = tracker.findAll();
-                System.out.println(Arrays.toString(items));
+                for(Item item : items) {
+                    System.out.println(item);
+                }
 
             } else if( select == 2) {
 
@@ -72,7 +74,9 @@ public class StartUI {
                 String name = scanner.nextLine();
                 Item[] items = tracker.findByName(name);
                 if (items.length > 0) {
-                    System.out.println(Arrays.toString(items));
+                    for(Item item : items) {
+                        System.out.println(item);
+                    }
                 } else {
                     System.out.println("No tickets with this name were found");
                 }
