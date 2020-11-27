@@ -20,7 +20,7 @@ public class StartUI {
     }
 
     public static void replaceItem(Input input, Tracker tracker ) {
-        System.out.println("=== Edit itme ===");
+        System.out.println("=== Update item ===");
         int id = input.askInt("Enter Id: ");
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
