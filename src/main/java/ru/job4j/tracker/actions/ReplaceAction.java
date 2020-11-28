@@ -1,11 +1,13 @@
 package ru.job4j.tracker.actions;
 
-import ru.job4j.tracker.Input;
-import ru.job4j.tracker.Item;
-import ru.job4j.tracker.Tracker;
-import ru.job4j.tracker.UserAction;
+import ru.job4j.tracker.*;
 
 public class ReplaceAction implements UserAction {
+    private final Output out;
+
+    public ReplaceAction(Output out) {
+        this.out = out;
+    }
 
     @Override
     public String name() {
@@ -18,9 +20,9 @@ public class ReplaceAction implements UserAction {
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         if (tracker.replace(id, item)) {
-            System.out.println("Item is replace");
+            out.println("Item is replace");
         } else {
-            System.out.println("Item isn't replace");
+            out.println("Item isn't replace");
         }
         return true;
     }
