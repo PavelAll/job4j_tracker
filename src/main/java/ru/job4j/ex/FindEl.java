@@ -1,6 +1,6 @@
 package ru.job4j.ex;
 
-import ru.job4j.ex.ru.job4j.ex.ElementNotFoundException;
+import java.util.Arrays;
 
 public class FindEl {
     public static int indexOf(String[] value, String key) throws ElementNotFoundException {
