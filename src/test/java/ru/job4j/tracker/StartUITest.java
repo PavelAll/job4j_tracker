@@ -117,7 +117,15 @@ public class StartUITest {
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getName(), is("Find item by id"));
+        assertThat(output.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. === Find item by Id ===" + System.lineSeparator() +
+                        "1. === Exit ===" + System.lineSeparator() +
+                        "Find item by id" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. === Find item by Id ===" + System.lineSeparator() +
+                        "1. === Exit ===" + System.lineSeparator()
+        ));
     }
 
 
@@ -132,7 +140,15 @@ public class StartUITest {
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getName(), is("Find item by Name"));
+        assertThat(output.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. === Find items by name ===" + System.lineSeparator() +
+                        "1. === Exit ===" + System.lineSeparator() +
+                        "Find item by Name" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. === Find items by name ===" + System.lineSeparator() +
+                        "1. === Exit ===" + System.lineSeparator()
+        ));
     }
 
     @Test
@@ -146,6 +162,14 @@ public class StartUITest {
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertThat(tracker.findAll()[0].getName(), is("Show All"));
+        assertThat(output.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. === Show all item ===" + System.lineSeparator() +
+                        "1. === Exit ===" + System.lineSeparator() +
+                        "Show All" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. === Show all item ===" + System.lineSeparator() +
+                        "1. === Exit ===" + System.lineSeparator()
+        ));
     }
 }
