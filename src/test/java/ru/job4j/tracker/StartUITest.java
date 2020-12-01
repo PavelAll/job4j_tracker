@@ -13,9 +13,9 @@ public class StartUITest {
     public void whenAddItem() {
         Output output = new StubOutput();
         String[] answers = {"Fix PC"};
-        Input input = new StubInput(answers);
+        Input in = new ValidateInput(output, new StubInput(answers));
         Tracker tracker = new Tracker();
-        new CreateAction(output).execute(input, tracker);
+        new CreateAction(output).execute(in, tracker);
         Item created = tracker.findAll()[0];
         Item expected = new Item("Fix PC");
         assertThat(created.getName(), is(expected.getName()));
@@ -28,8 +28,8 @@ public class StartUITest {
         Item item = new Item("new item");
         tracker.add(item);
         String[] answers = { String.valueOf(item.getId()), "replaced item"};
-        Input input = new StubInput(answers);
-        new ReplaceAction(output).execute(input, tracker);
+        Input in = new ValidateInput(output, new StubInput(answers));
+        new ReplaceAction(output).execute(in, tracker);
         Item replaced = tracker.findById(item.getId());
         assertThat(replaced.getName(), is("replaced item"));
     }
@@ -41,8 +41,8 @@ public class StartUITest {
         Item item = new Item("new item");
         tracker.add(item);
         String[] answers = {"1"};
-        Input input = new StubInput(answers);
-        new DeleteAction(output).execute(input, tracker);
+        Input in = new ValidateInput(output, new StubInput(answers));
+        new DeleteAction(output).execute(in, tracker);
         Item expected = tracker.findById(1);
         assertThat(expected, is(nullValue()));
     }
@@ -50,9 +50,7 @@ public class StartUITest {
     @Test
     public void whenCreateItem() {
         Output output = new StubOutput();
-        Input in = new StubInput(
-                new String[] { "0", "Item name", "1" }
-        );
+        Input in = new ValidateInput(output, new StubInput(new String[] { "0", "Item name", "1" }));
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(output),
@@ -61,13 +59,13 @@ public class StartUITest {
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findAll()[0].getName(), is("Item name"));
     }
-//
+
     @Test
     public void whenReplace() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Replaced item"));
-        Input in = new StubInput( new String[]{ "0", "1", "Pavel All", "1" } );
+        Input in = new ValidateInput(output , new StubInput(new String[]{ "0", "1", "Pavel All", "1" }));
         UserAction[] actions = {
                 new ReplaceAction(output),
                 new ExitAction()
@@ -82,7 +80,7 @@ public class StartUITest {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Deleted item"));
-        Input in = new StubInput( new String[]{ "0", "1", "1" } );
+        Input in = new ValidateInput(output, new StubInput( new String[]{ "0", "1", "1" }));
         UserAction[] actions = {
                 new DeleteAction(output),
                 new ExitAction()
@@ -94,7 +92,7 @@ public class StartUITest {
     @Test
     public void whenExit() {
         Output output = new StubOutput();
-        Input in = new StubInput(new String[] {"0"});
+        Input in = new ValidateInput(output,  new StubInput(new String[] {"0"}));
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new ExitAction()
@@ -109,7 +107,7 @@ public class StartUITest {
     @Test
     public void whenFindById() {
         Output output = new StubOutput();
-        Input in = new StubInput(new String[] {"0", "1", "1"});
+        Input in = new ValidateInput(output, new StubInput(new String[] {"0", "1", "1"}));
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Find item by id"));
         UserAction[] actions = {
@@ -132,7 +130,7 @@ public class StartUITest {
     @Test
     public void whenFindByName() {
         Output output = new StubOutput();
-        Input in = new StubInput(new String[] {"0", "Find item by Name", "1"});
+        Input in = new ValidateInput(output, new StubInput(new String[] {"0", "Find item by Name", "1"}));
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Find item by Name"));
         UserAction[] actions = {
@@ -154,7 +152,7 @@ public class StartUITest {
     @Test
     public void whenShowAll() {
         Output output = new StubOutput();
-        Input in = new StubInput(new String[] {"0", "1"});
+        Input in = new ValidateInput(output, new StubInput(new String[] {"0", "1"}));
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Show All"));
         UserAction[] actions = {
@@ -176,9 +174,7 @@ public class StartUITest {
     @Test
     public void whenInvalidExit() {
         Output out = new StubOutput();
-        Input in = new StubInput(
-                new String[] {"-1", "0"}
-        );
+        Input in = new ValidateInput(out, new StubInput(new String[] {"-1", "0"}));
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new ExitAction()
