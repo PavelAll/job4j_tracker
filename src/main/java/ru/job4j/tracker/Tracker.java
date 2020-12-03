@@ -7,6 +7,42 @@ public class Tracker {
     private int ids = 1;
     private int size = 0;
 
+    /*-----------------------------------*/
+    // 1 метод Энергичная загрузка (Eager loading)
+    private static final Tracker INSTANCE = new Tracker();
+    public static Tracker getInstance1() {
+        return INSTANCE;
+    }
+    /*-----------------------------------*/
+    // 2 метод Ленивая загрузка (Lazy loading)
+    private static Tracker INSTANCE2;
+    public static Tracker getInstance2() {
+        if (INSTANCE2 == null) {
+            INSTANCE2 = new Tracker();
+        }
+        return INSTANCE2;
+    }
+    /*-----------------------------------*/
+    // 3 метод через внутренний класс (Lazy loading)
+    private static class Holder {
+        private static final Tracker tracker = new Tracker();
+    }
+
+    public static Tracker getInstance3() {
+        return Holder.tracker;
+    }
+    /*-----------------------------------*/
+    // 4 метод через enum (Eager loading)
+    public static Tracker tracker = new Tracker();
+
+    public enum TrackerSingle {
+        tracker;
+
+        public static Tracker getInstance() {
+            return Tracker.tracker;
+        }
+    }
+    /*-----------------------------------*/
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
         boolean rsl = index != -1;
