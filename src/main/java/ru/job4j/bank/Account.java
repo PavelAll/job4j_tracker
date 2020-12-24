@@ -10,7 +10,6 @@ public class Account {
         this.requisite = requisite;
         this.balance = balance;
     }
-
     public String getRequisite() {
         return requisite;
     }
