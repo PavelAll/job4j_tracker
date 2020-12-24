@@ -21,8 +21,7 @@ public class PassportOfficeTest {
     @Test
     public void whenFalse() {
         PassportOffice office = new PassportOffice();
-        Map<String, Citizen> map = new HashMap<>();
-        map.put("2f44a", new Citizen("2f44a", "Pavel Alekseev"));
+        office.add(new Citizen("2f44a", "Pavel Alekseev"));
         Citizen citizen = new Citizen("2f44a", "Pavel Alekseev");
         assertThat(office.add(citizen), is(false));
     }
