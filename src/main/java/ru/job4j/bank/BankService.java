@@ -14,16 +14,11 @@ public class BankService {
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        List<Account> accounts = users.get(user);
-        if (accounts.size() != 0) {
-            for (Account list : accounts) {
-                if (!list.equals(account)) {
-                    accounts.add(account);
-                    break;
-                }
+        if (user != null) {
+            List<Account> accounts = users.get(user);
+            if (!accounts.contains(account)) {
+                accounts.add(account);
             }
-        } else {
-            accounts.add(account);
         }
     }
 
@@ -37,13 +32,12 @@ public class BankService {
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        for (User user: users.keySet()) {
-            List<Account> lists = users.get(user);
-            if (user.getPassport().equals(passport)) {
-                for (Account list : lists) {
-                    if (list.getRequisite().equals(requisite)) {
-                        return list;
-                    }
+        User user = findByPassport(passport);
+        if (user != null) {
+            List<Account> accounts = users.get(user);
+            for (Account account : accounts) {
+                if (account.getRequisite().equals(requisite)) {
+                    return account;
                 }
             }
         }
@@ -54,23 +48,12 @@ public class BankService {
         boolean rsl = false;
         User srcPass = findByPassport(srcPassport);
         User destPass = findByPassport(destPassport);
-        if (srcPass != null && destPass != null) {
-            List<Account> srcAccounts = users.get(srcPass);
-            List<Account> destAccounts = users.get(destPass);
-            if (srcAccounts.size() != 0 && destAccounts.size() != 0) {
-                for (Account listSrc : srcAccounts) {
-                    if (listSrc.getRequisite().equals(requisite) && listSrc.getBalance() >= 0) {
-
-                        for (Account listDest : destAccounts) {
-                            if (listDest.getRequisite().equals(destRequisite)) {
-                                listSrc.setBalance(listSrc.getBalance() - amount);
-                                listDest.setBalance(listDest.getBalance() + amount);
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
+        if (srcPass != null && destPass != null && findByRequisite(srcPassport, requisite).getBalance() >= amount) {
+            Account srcAccount = findByRequisite(srcPassport, requisite);
+            Account destAccount = findByRequisite(destPassport, destRequisite);
+            srcAccount.setBalance(srcAccount.getBalance() - amount);
+            destAccount.setBalance(destAccount.getBalance() + amount);
+            rsl = true;
         }
         return rsl;
     }
