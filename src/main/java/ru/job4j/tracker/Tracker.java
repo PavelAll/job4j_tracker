@@ -65,4 +65,8 @@ public class Tracker {
         /* Если индекс найден возвращаем item, иначе null */
         return index != -1 ? items.get(index) : null;
     }
+
+    public List<Item> getItems() {
+        return this.items;
+    }
 }

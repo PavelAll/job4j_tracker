@@ -4,6 +4,7 @@ import org.junit.Test;
 import ru.job4j.tracker.actions.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.nullValue;
@@ -164,11 +165,12 @@ public class StartUITest {
                 new ExitAction()
         );
         new StartUI(output).init(in, tracker, actions);
+
         assertThat(output.toString(), is(
-                "Menu." + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
                         "0. === Show all item ===" + System.lineSeparator() +
                         "1. === Exit ===" + System.lineSeparator() +
-                        "Show All" + System.lineSeparator() +
+                        "Item{id=1, name='Show All'}" + System.lineSeparator() +
                         "Menu." + System.lineSeparator() +
                         "0. === Show all item ===" + System.lineSeparator() +
                         "1. === Exit ===" + System.lineSeparator()
@@ -191,6 +193,75 @@ public class StartUITest {
                       + "Wrong input, you can select: 0 .. 0%n"
                       + "Menu.%n"+ "0. === Exit ===%n"
                 )
+        ));
+    }
+
+    @Test
+    public void whenSort() {
+        Output output = new StubOutput();
+
+        Input in = new ValidateInput(output, new StubInput(new String[] {"0", "1", "2"}));
+        Tracker tracker = new Tracker();
+        Item item1 = tracker.add(new Item("Ivan"));
+        Item item2 = tracker.add(new Item("Pavel"));
+        Item item3 = tracker.add(new Item("Aleks"));
+        List<UserAction> actions = List.of(
+                new Sort(),
+                new ShowAllAction(output),
+                new ExitAction()
+        );
+        new StartUI(output).init(in, tracker, actions);
+
+        assertThat(output.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. === Sort In Ascending ===" + System.lineSeparator() +
+                        "1. === Show all item ===" + System.lineSeparator() +
+                        "2. === Exit ===" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. === Sort In Ascending ===" + System.lineSeparator() +
+                        "1. === Show all item ===" + System.lineSeparator() +
+                        "2. === Exit ===" + System.lineSeparator() +
+                        "Item{id=3, name='Aleks'}" + System.lineSeparator() +
+                        "Item{id=1, name='Ivan'}" + System.lineSeparator() +
+                        "Item{id=2, name='Pavel'}" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. === Sort In Ascending ===" + System.lineSeparator() +
+                        "1. === Show all item ===" + System.lineSeparator() +
+                        "2. === Exit ===" + System.lineSeparator()
+        ));
+    }
+
+    @Test
+    public void whenSortReverse() {
+        Output output = new StubOutput();
+        Input in = new ValidateInput(output, new StubInput(new String[] {"0", "1", "2"}));
+        Tracker tracker = new Tracker();
+        Item item1 = tracker.add(new Item("Ivan"));
+        Item item2 = tracker.add(new Item("Pavel"));
+        Item item3 = tracker.add(new Item("Aleks"));
+        List<UserAction> actions = List.of(
+                new SortReverse(),
+                new ShowAllAction(output),
+                new ExitAction()
+        );
+        new StartUI(output).init(in, tracker, actions);
+
+        assertThat(output.toString(), is(
+                "Menu." + System.lineSeparator() +
+                        "0. === Sort In Descending ===" + System.lineSeparator() +
+                        "1. === Show all item ===" + System.lineSeparator() +
+                        "2. === Exit ===" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. === Sort In Descending ===" + System.lineSeparator() +
+                        "1. === Show all item ===" + System.lineSeparator() +
+                        "2. === Exit ===" + System.lineSeparator() +
+                        "Item{id=2, name='Pavel'}" + System.lineSeparator() +
+                        "Item{id=1, name='Ivan'}" + System.lineSeparator() +
+                        "Item{id=3, name='Aleks'}" + System.lineSeparator() +
+                        "Menu." + System.lineSeparator() +
+                        "0. === Sort In Descending ===" + System.lineSeparator() +
+                        "1. === Show all item ===" + System.lineSeparator() +
+                        "2. === Exit ===" + System.lineSeparator()
         ));
     }
 }
