@@ -15,8 +15,10 @@ public class Battery {
     public static void main(String[] args) {
         Battery first = new Battery(95);
         Battery second = new Battery(5);
-        System.out.println("Power first battery: " + first.load + "%. Power second battery: " + second.load + "%.");
+        System.out.println("Power first battery: " + first.load + "%. Power second battery: "
+                + second.load + "%.");
         first.exchange(second);
-        System.out.println("Power first battery: " + first.load + "%. Power second battery: " + second.load + "%.");
+        System.out.println("Power first battery: " + first.load + "%. Power second battery: "
+                + second.load + "%.");
     }
 }

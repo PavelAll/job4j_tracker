@@ -11,8 +11,9 @@ public class College {
         student.setGroup(122);
         student.setAdmission(new Date());
 
-        System.out.println(student.getSurname() + " " + student.getName() + " " + student.getPatronymic() +
-                System.lineSeparator() + "Группа - " + student.getGroup() + System.lineSeparator() +
-                "Дата поступления - " + student.getAdmission());
+        System.out.println(student.getSurname() + " " + student.getName()
+                + " " + student.getPatronymic() + System.lineSeparator()
+                + "Группа - " + student.getGroup() + System.lineSeparator()
+                + "Дата поступления - " + student.getAdmission());
     }
 }

@@ -13,12 +13,13 @@ public class Library {
             System.out.println(bk.getName() + " - " + bk.getPage());
         }
 
-        System.out.println("Swap book " + "\"" + books[0].getName() + "\"" + " with book " + "\"" + books[3].getName() + "\"");
-
+        System.out.println("Swap book " + "\""
+                + books[0].getName() + "\""
+                + " with book " + "\""
+                + books[3].getName() + "\"");
         Book temp = books[0];
         books[0] = books[3];
         books[3] = temp;
-
 
         for (int index = 0; index < books.length; index++) {
             Book bk = books[index];

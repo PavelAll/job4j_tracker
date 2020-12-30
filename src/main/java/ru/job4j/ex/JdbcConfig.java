@@ -10,7 +10,7 @@ public class JdbcConfig {
     public static void main(String[] args) {
         try {
             load("jdbc://localhost:8080");
-        }catch (UserInputException e) {
+        } catch (UserInputException e) {
             e.printStackTrace();
         }
     }

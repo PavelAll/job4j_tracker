@@ -1,6 +1,6 @@
 package ru.job4j.inheritance.professions.pacient;
 
-public class Pacient{
+public class Pacient {
     private String name;
 
     public Pacient(String name) {

@@ -1,7 +1,5 @@
 package ru.job4j.ex;
 
-
-
 public class FindEl {
     public static int indexOf(String[] value, String key) throws ElementNotFoundException {
         int rsl = -1;
@@ -11,7 +9,7 @@ public class FindEl {
                 break;
             }
         }
-        if(rsl == -1) {
+        if (rsl == -1) {
             throw new ElementNotFoundException("Element Not found exception");
         }
         return rsl;
@@ -20,10 +18,12 @@ public class FindEl {
     public static boolean sent(String value, String[] obuses) throws ElementAbuseException {
         for (int i = 0; i < obuses.length; i++) {
             if (obuses[i].equals(value)) {
-                throw new ElementAbuseException("The key is included in the keys of prohibited keys");
+                throw new ElementAbuseException(
+                        "The key is included in the keys of prohibited keys"
+                );
             }
         }
-            return true;
+        return true;
     }
 
     public static void process(String[] value, String key, String[] obuses) {

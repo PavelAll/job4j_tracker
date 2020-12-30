@@ -10,6 +10,7 @@ public class FindItemsByName implements UserAction {
     public FindItemsByName(Output out) {
         this.out = out;
     }
+
     @Override
     public String name() {
         return "=== Find items by name ===";
@@ -20,7 +21,7 @@ public class FindItemsByName implements UserAction {
         String name = input.askStr("Enter name: ");
         List<Item> items = tracker.findByName(name);
         if (items.size() > 0) {
-            for(Item item : items) {
+            for (Item item : items) {
                 out.println(item.getName());
             }
         } else {

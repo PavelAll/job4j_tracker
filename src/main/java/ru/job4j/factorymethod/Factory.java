@@ -1,6 +1,6 @@
-package ru.job4j.factory_method;
+package ru.job4j.factorymethod;
 
-public class Factory implements ShapeAbstFactory{
+public class Factory implements ShapeAbstFactory {
 
     @Override
     public TriangleShape createTriangle() {

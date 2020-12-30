@@ -1,6 +1,6 @@
 package ru.job4j.oop;
 
-public class Aircraft implements Vehicle{
+public class Aircraft implements Vehicle {
     private String className = getClass().getSimpleName();
 
     @Override

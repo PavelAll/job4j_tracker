@@ -8,7 +8,7 @@ public class SingletonStaticFieldTest {
 
     @Test
     public void whenStaticField() {
-        SingletonStaticField rsl = SingletonStaticField.getInstance();
-        assertSame(rsl, SingletonStaticField.getInstance());
+        SingletonStatic rsl = SingletonStatic.getInstance();
+        assertSame(rsl, SingletonStatic.getInstance());
     }
 }

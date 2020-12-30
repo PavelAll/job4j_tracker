@@ -15,7 +15,6 @@ public class Person {
         this.address = address;
     }
 
-
     public String getName() {
         return name;
     }
@@ -31,5 +30,4 @@ public class Person {
     public String getAddress() {
         return address;
     }
-
 }

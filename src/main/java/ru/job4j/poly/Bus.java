@@ -22,11 +22,12 @@ public class Bus implements Transport {
 
     @Override
     public int tankUp(int fuelQuantity) {
-        System.out.println("Balance before refueling: " + balance + " and the amount of gasoline: " + this.fuelQuantity);
+        System.out.println("Balance before refueling: "
+                + balance + " and the amount of gasoline: " + this.fuelQuantity);
         this.fuelQuantity = fuelQuantity;
-        return balance -= fuelQuantity * 10;
+        balance -= fuelQuantity * 10;
+        return balance;
     }
-
 
     public static void main(String[] args) {
         Transport bus = new Bus();

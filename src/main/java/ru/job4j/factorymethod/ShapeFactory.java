@@ -1,4 +1,4 @@
-package ru.job4j.factory_method;
+package ru.job4j.factorymethod;
 
 public class ShapeFactory {
     private final ShapeAbstFactory factory;
@@ -17,7 +17,6 @@ public class ShapeFactory {
         }
         return shape;
     }
-
 
     public static void main(String[] args) {
         ShapeFactory sf = new ShapeFactory(new Factory());

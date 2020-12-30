@@ -19,10 +19,10 @@ public class PhoneDictionary {
         ArrayList<Person> result = new ArrayList<>();
         for (int i = 0; i < persons.size(); i++) {
             Person person = persons.get(i);
-            if (person.getName().contains(key) ||
-                    person.getSurname().contains(key) ||
-                    person.getPhone().contains(key) ||
-                    person.getAddress().contains(key)) {
+            if (person.getName().contains(key)
+                    || person.getSurname().contains(key)
+                    || person.getPhone().contains(key)
+                    || person.getAddress().contains(key)) {
                 result.add(persons.get(i));
             }
         }

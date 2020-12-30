@@ -1,4 +1,4 @@
-package ru.job4j.factory_method;
+package ru.job4j.factorymethod;
 
 public class EmptyShape extends Shape {
 

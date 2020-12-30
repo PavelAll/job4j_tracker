@@ -27,14 +27,13 @@ public class ConvertMatrix2ListTest {
     public void when4on4ArrayThenList16() {
         ConvertMatrix2List list = new ConvertMatrix2List();
         int[][] input = {
-                { 1,  2,  3,  4},
-                { 5,  6,  7,  8},
-                { 9, 10, 11, 12},
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12},
                 {13, 14, 15, 16}
         };
         List<Integer> expect = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
         List<Integer> result = list.toList(input);
-
         assertThat(result, is(expect));
     }
 }

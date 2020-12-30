@@ -1,7 +1,6 @@
 package ru.job4j.pojo;
 
 import org.junit.Test;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -15,7 +14,6 @@ public class LicenseTest {
         second.setOwner("Ivanov");
         assertThat(first, is(second));
     }
-
 
     @Test
     public void eqCode() {

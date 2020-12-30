@@ -10,6 +10,7 @@ public class ShowAllAction implements UserAction {
     public ShowAllAction(Output out) {
         this.out = out;
     }
+
     @Override
     public String name() {
         return "=== Show all item ===";
@@ -18,7 +19,7 @@ public class ShowAllAction implements UserAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         List<Item> items = tracker.findAll();
-        for(Item item : items) {
+        for (Item item : items) {
             out.println(item);
         }
         return true;
