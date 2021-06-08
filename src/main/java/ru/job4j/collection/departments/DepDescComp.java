@@ -3,7 +3,6 @@ package ru.job4j.collection.departments;
 import java.util.Comparator;
 
 public class DepDescComp implements Comparator<String> {
-
     @Override
     public int compare(String str1, String str2) {
         String[]s1 = str1.split("/");
