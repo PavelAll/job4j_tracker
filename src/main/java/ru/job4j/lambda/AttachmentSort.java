@@ -47,10 +47,5 @@ public class AttachmentSort {
         Comparator<Attachment> comp = (left, right) -> left.getSize() - right.getSize();
         Arrays.sort(atts, comp);
         System.out.println(Arrays.toString(atts));
-
-        String[] strArr = {"A", "C", "Z", "D", "S"};
-        Comparator<String> cmpStr = (s1, s2) -> s2.compareTo(s1);
-        Arrays.sort(strArr, cmpStr);
-        System.out.println(Arrays.toString(strArr));
     }
 }
