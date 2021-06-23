@@ -38,5 +38,19 @@ public class AttachmentSort {
 
         attachments.sort(comparator);
         System.out.println(attachments);
+
+        Attachment[] atts = {
+                new Attachment("Image 1", 20),
+                new Attachment("Image 3", 120),
+                new Attachment("Image 2", 23)
+        };
+        Comparator<Attachment> comp = (left, right) -> left.getSize() - right.getSize();
+        Arrays.sort(atts, comp);
+        System.out.println(Arrays.toString(atts));
+
+        String[] strArr = {"A", "C", "Z", "D", "S"};
+        Comparator<String> cmpStr = (s1, s2) -> s2.compareTo(s1);
+        Arrays.sort(strArr, cmpStr);
+        System.out.println(Arrays.toString(strArr));
     }
 }
