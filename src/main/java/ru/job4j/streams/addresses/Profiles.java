@@ -12,10 +12,10 @@ public class Profiles {
                 .collect(Collectors.toList());
     }
 
-    public List<Address> sorted(Comparator<Address> comp, List<Profile> profiles) {
-        List<Address> rsl = collect(profiles);
-        Collections.sort(rsl, comp);
-        return rsl.stream()
+    public List<Address> sorted(List<Profile> profiles) {
+        return profiles.stream()
+                .map(Profile::getAddress)
+                .sorted(Comparator.comparing(Address::getCity))
                 .distinct()
                 .collect(Collectors.toList());
     }

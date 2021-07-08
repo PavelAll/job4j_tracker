@@ -39,8 +39,7 @@ public class ProfilesTest {
         );
 
         Profiles pr = new Profiles();
-        Comparator<Address> comp = (a1, a2) -> a1.getCity().compareTo(a2.getCity());
-        List<Address> rsl = pr.sorted(comp, profiles);
+        List<Address> rsl = pr.sorted(profiles);
         List<Address> expected = List.of(
                 new Address("Moscow", "Tverskaya", 23, 2),
                 new Address("Yekaterinburg", "Sovetskaya", 34, 8)
